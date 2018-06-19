@@ -6,6 +6,7 @@ import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
 /**
  * Created by codecadet on 19/06/2018.
@@ -18,9 +19,10 @@ public class WebServer {
     ServerSocket serverSocket = null;
     Socket clientSocket = null;
     File outgoingFile = null;
+    Checker checker;
 
     public WebServer() {
-
+        this.checker = new Checker();
     }
 
     public void start() {
@@ -51,12 +53,12 @@ public class WebServer {
                 String requestPath = requestArray[1];
                 String requestProtocol = requestArray[2];
 
-                String pathFile = checkRequestPath(requestPath);
+                String pathFile = checker.checkRequestPath(requestPath);
 
                 outgoingFile = new File(pathFile);
 
-                out.writeUTF("HTTP/1.0" + checkFile(outgoingFile) + "\r\n" +
-                        "Content-Type: " + checkRequestType(pathFile) + "\r\n" +
+                out.writeUTF("HTTP/1.0" + checker.checkFile(outgoingFile) + "\r\n" +
+                        "Content-Type: " + checker.checkRequestType(pathFile) + "\r\n" +
                         "Content-Length: " + outgoingFile.length() + "\r\n" +
                         "\r\n");
 
@@ -67,42 +69,34 @@ public class WebServer {
                 out.write(outgoingArray, 0, (int) outgoingFile.length());
             }
 
+
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            closeStreams(out, in);
+            closeSockets(serverSocket, clientSocket);
+        }
+    }
+
+    private static void closeStreams(DataOutputStream out, BufferedReader in) {
+        try {
             out.close();
             in.close();
-            serverSocket.close();
-            clientSocket.close();
-
-
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private String checkRequestPath(String path) {
-        if (path.equals("/") || path.equals("/index.html")) {
-            return "www/index.html";
+    private static void closeSockets(ServerSocket serverSocket, Socket clientSocket) {
+        try {
+            clientSocket.close();
+            serverSocket.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
-        if (path.equals("/academia.png")){
-            return "www/academia.png";
-        }
-        return "www/error404.html";
-    }
-
-    private String checkRequestType(String fileName) {
-        if (fileName.endsWith(".png")) {
-            return "image/png";
-        }
-        if (fileName.endsWith(".jpg")) {
-            return "image/jpg";
-        }
-        return "text/html; charset=UTF-8";
-    }
-
-    private String checkFile(File file) {
-        if (file.exists()) {
-            return "200 Document Follows";
-        }
-        return "404 Not Found";
     }
 
 }
