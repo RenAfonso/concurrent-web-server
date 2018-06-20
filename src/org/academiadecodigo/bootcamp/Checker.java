@@ -24,6 +24,7 @@ public class Checker {
         return "www/error404.html";
     }
 
+
     public String checkRequestType(String fileName) {
 
         if (fileName.length() > 3) {
@@ -36,6 +37,7 @@ public class Checker {
         }
         return "text/html; charset=UTF-8";
     }
+
 
     public String checkFile(File file) {
 

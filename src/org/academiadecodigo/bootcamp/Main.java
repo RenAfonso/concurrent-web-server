@@ -13,9 +13,7 @@ public class Main {
 
         WebServer webServer = new WebServer();
 
-        while (true) {
             webServer.start();
-        }
 
     }
 }
