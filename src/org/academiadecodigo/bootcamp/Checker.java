@@ -12,6 +12,7 @@ public class Checker {
     }
 
     public String checkRequestPath(String path) {
+
         if ((new File("www" + path)).exists()) {
 
             if (path.equals("/") || path.equals("/index.html")) {
@@ -24,16 +25,20 @@ public class Checker {
     }
 
     public String checkRequestType(String fileName) {
-        if (fileName.endsWith(".png")) {
-            return "image/png";
-        }
-        if (fileName.endsWith(".jpg")) {
-            return "image/jpg";
+
+        if (fileName.length() > 3) {
+
+            String fileType = fileName.substring(fileName.length() - 4);
+
+            if (fileType.equals(".jpg") || fileType.equals(".png")) {
+                return "image/" + fileType.substring(fileType.length() - 3);
+            }
         }
         return "text/html; charset=UTF-8";
     }
 
     public String checkFile(File file) {
+
         if (file.exists()) {
             return "200 Document Follows";
         }
