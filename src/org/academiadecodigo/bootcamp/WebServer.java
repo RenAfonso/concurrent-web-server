@@ -3,10 +3,6 @@ package org.academiadecodigo.bootcamp;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Scanner;
 
 /**
  * Created by codecadet on 19/06/2018.
@@ -19,11 +15,11 @@ public class WebServer {
     ServerSocket serverSocket = null;
     Socket clientSocket = null;
     Checker checker;
-    HttpGet httpGet;
+    HttpMethods httpMethods;
 
     public WebServer() {
         this.checker = new Checker();
-        this.httpGet = new HttpGet();
+        this.httpMethods = new HttpMethods();
     }
 
     public void start() {
@@ -31,7 +27,7 @@ public class WebServer {
         System.out.println("waiting for requests");
 
         try {
-            serverSocket = new ServerSocket(8080);
+            serverSocket = new ServerSocket(5080);
 
             while (true) {
 
@@ -42,19 +38,56 @@ public class WebServer {
 
 
                 String line;
+                String oldLine = null;
+                String raw = "";
+                int emptyLine = 0;
+                int lengthInt = 0;
 
-                if ((line = in.readLine()) != null) {
+                while ((line = in.readLine()) != null) {
+                    raw += line;
                     System.out.println(line);
+                    System.out.println(line.length());
+
+                    String[] temp = raw.split(" ");
+                    if (temp[0].equals("GET")) {
+                        break;
+                    }
+
+                    if (temp[0].equals("Content-length:")) {
+                        lengthInt = Integer.parseInt(temp[1]);
+                    }
+
+                    if (emptyLine == 1) {
+                        break;
+                    }
+
+                    if (line.equals("")) {
+                        emptyLine++;
+                    }
+
                 }
 
-                String[] requestArray = line.split(" ");
+                System.out.println("out of the while loop");
+
+                String[] requestArray = raw.split(" ");
+                System.out.println("split done");
 
                 if (requestArray[0].equals("GET")) {
+                    System.out.println(requestArray[0]);
 
-                    httpGet.returnFile(requestArray, checker, out);
+                    httpMethods.get(requestArray, checker, out);
                 }
+
+                /*if (requestArray[0].equals("POST")) {
+
+
+                    httpMethods.post();
+                }*/
+
             }
 
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
         } catch (IOException e) {
             System.out.println(e.getMessage());
 
@@ -63,7 +96,6 @@ public class WebServer {
             closeSockets(serverSocket, clientSocket);
         }
     }
-
 
 
     private static void closeStreams(DataOutputStream out, BufferedReader in) {

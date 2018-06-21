@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp;
 
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,9 +11,11 @@ import java.nio.file.Paths;
 /**
  * Created by codecadet on 20/06/2018.
  */
-public class HttpGet {
+public class HttpMethods {
 
-    public void returnFile(String[] requestArray, Checker checker, DataOutputStream out) throws IOException {
+    public void get(String[] requestArray, Checker checker, DataOutputStream out) throws IOException {
+
+        // Works inbound header
 
         String requestPath = requestArray[1];
         String requestProtocol = requestArray[2];
@@ -26,10 +29,18 @@ public class HttpGet {
                 "Content-Length: " + outgoingFile.length() + "\r\n" +
                 "\r\n");
 
-        Path filePath = Paths.get(outgoingFile.getPath());
 
-        byte[] outgoingArray = Files.readAllBytes(filePath);
+        // Sends outgoing file;
 
-        out.write(outgoingArray, 0, (int) outgoingFile.length());
+        int bytesRead = 0;
+        byte[] buffer = new byte[1024];
+
+        FileInputStream fileInputStream = new FileInputStream(pathFile);
+
+        while((bytesRead = fileInputStream.read(buffer)) != -1) {
+            out.write(buffer, 0 , bytesRead);
+        }
+
     }
+
 }
