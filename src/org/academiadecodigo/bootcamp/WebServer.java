@@ -53,7 +53,7 @@ public class WebServer {
                         break;
                     }
 
-                    if (temp[0].equals("Content-length:")) {
+                    /*if (temp[0].equals("Content-length:")) {
                         lengthInt = Integer.parseInt(temp[1]);
                     }
 
@@ -63,7 +63,7 @@ public class WebServer {
 
                     if (line.equals("")) {
                         emptyLine++;
-                    }
+                    }*/
 
                 }
 
