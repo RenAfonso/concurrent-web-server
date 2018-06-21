@@ -10,15 +10,8 @@ import java.net.Socket;
 public class WebServer {
 
     //PrintWriter out = null;
-    DataOutputStream out = null;
-    BufferedReader in = null;
     ServerSocket serverSocket = null;
     Socket clientSocket = null;
-    Checker checker;
-
-    public WebServer() {
-        this.checker = new Checker();
-    }
 
     public void start() {
 
@@ -31,7 +24,7 @@ public class WebServer {
 
                 clientSocket = serverSocket.accept();
 
-                Thread thread = new Thread(new HttpThreading(out, in, serverSocket, clientSocket, checker));
+                Thread thread = new Thread(new HttpThreading(serverSocket, clientSocket));
                 thread.start();
 
                 System.out.println("this thread : " + Thread.currentThread().getName());
@@ -42,6 +35,7 @@ public class WebServer {
             System.out.println(e.getMessage());
         } catch (IOException e) {
             System.out.println(e.getMessage());
+
         } finally {
             try {
                 serverSocket.close();

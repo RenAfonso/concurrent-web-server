@@ -9,18 +9,16 @@ import java.net.Socket;
  */
 public class HttpThreading implements Runnable {
 
-    DataOutputStream out;
-    BufferedReader in;
+    DataOutputStream out = null;
+    BufferedReader in = null;
     ServerSocket serverSocket;
     Socket clientSocket;
     Checker checker;
 
-    public HttpThreading(DataOutputStream out, BufferedReader in, ServerSocket serverSocket, Socket clientSocket, Checker checker) {
-        this.out = out;
-        this.in = in;
+    public HttpThreading(ServerSocket serverSocket, Socket clientSocket) {
         this.serverSocket = serverSocket;
         this.clientSocket = clientSocket;
-        this.checker = checker;
+        this.checker = new Checker();
     }
 
 
@@ -61,7 +59,7 @@ public class HttpThreading implements Runnable {
 
                 // Sends outgoing file;
 
-               httpMethods.handleGet(pathFile, out, clientSocket);
+                httpMethods.handleGet(pathFile, out, clientSocket);
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
