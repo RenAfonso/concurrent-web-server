@@ -3,6 +3,8 @@ package org.academiadecodigo.bootcamp;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by codecadet on 19/06/2018.
@@ -24,8 +26,11 @@ public class WebServer {
 
                 clientSocket = serverSocket.accept();
 
-                Thread thread = new Thread(new HttpThreading(serverSocket, clientSocket));
-                thread.start();
+                ExecutorService fixedPool = Executors.newFixedThreadPool(5000);
+                fixedPool.submit(new HttpThreading(serverSocket, clientSocket));
+
+                //Thread thread = new Thread(;
+                //thread.start();
 
                 System.out.println("this thread : " + Thread.currentThread().getName());
 
