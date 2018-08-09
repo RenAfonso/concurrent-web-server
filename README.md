@@ -10,4 +10,4 @@ Written in JAVA. No frameworks used.
 
 ## How to use
 
-After running the app, open your browser and go to [localhost:8080](localhost:8080).
+After running the app, open your browser and go to [localhost:8080](http://localhost:8080).

@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d582df5-d3ca-4a3c-b44b-75cec6387186" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/video.mp4" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/webserver/org/academiadecodigo/bootcamp/Checker.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/webserver/org/academiadecodigo/bootcamp/HttpMethods.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/webserver/org/academiadecodigo/bootcamp/HttpThreading.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/webserver/org/academiadecodigo/bootcamp/Main.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/webserver/org/academiadecodigo/bootcamp/WebServer.class" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -702,12 +706,12 @@
       <workItem from="1529913679465" duration="247000" />
       <workItem from="1530087149543" duration="3036000" />
       <workItem from="1530172691939" duration="634000" />
-      <workItem from="1533821243167" duration="2397000" />
+      <workItem from="1533821243167" duration="2649000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59690000" />
+    <option name="totallyTimeSpent" value="59942000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="977" extended-state="6" />
