@@ -29,9 +29,6 @@ public class WebServer {
 
                 fixedPool.submit(new HttpThreading(serverSocket, clientSocket));
 
-                //Thread thread = new Thread(;
-                //thread.start();
-
                 System.out.println("this thread : " + Thread.currentThread().getName());
 
             }
