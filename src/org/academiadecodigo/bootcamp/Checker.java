@@ -34,6 +34,10 @@ public class Checker {
             if (fileType.equals(".jpg") || fileType.equals(".png")) {
                 return "image/" + fileType.substring(fileType.length() - 3);
             }
+
+            if (fileType.equals(".css")) {
+                return "text/" + fileType.substring(fileType.length() - 3);
+            }
         }
         return "text/html; charset=UTF-8";
     }

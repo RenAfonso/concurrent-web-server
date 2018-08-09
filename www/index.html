@@ -1,24 +1,192 @@
+<!-- This is an HTML comment -->
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>A small HTML file for testing purposes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=">
+    <link rel="icon" href="img/icon.png" type="image/png"/>
+    <link rel="stylesheet" type="text/css" href="css/browser-reset.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Galada|Roboto"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+          integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <title>Summarizer 0x23</title>
 </head>
+
 <body>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
 
-<h1>If you can read this:</h1>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-<p>You're on the right track!</p>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-brand"><img src="img/icon.png" height="35px" alt="sardine can"></li>
+            <li class="nav-item">
+                <a class="nav-link" href="#stylesheets">Including CSS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#structure">Basic structure</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#selectors">Selectors</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#priorities">Priorities</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#position">Position</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#layout">Layout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#responsive">Responsive is important</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-<img src="academia.png"/>
+<div class="container">
 
-<form action="/form.html" method="post">
-    First name: <input type="text" name="fname"><br>
-    Last name: <input type="text" name="lname"><br>
-    <input type="submit" value="Submit">
-</form>
+    <section id="summarizer" class="section summarizer">
+        <div class="jumbotron">
+            <h1 class="display-4">Summarizer 0x23</h1>
+            <p class="lead">
+                <h3>Mariana Liberato</h3>
+                <h6>#17_SSHardinhas</h6>
+            </p>
+            <hr class="my-4">
+            <a class="btn btn-primary btn-lg" href="#structure" role="button">Start</a>
+        </div>
+    </section>
 
+    <section id="stylesheets" class="section">
+        <div class="jumbotron">
+            <h1 class="display-4">Including CSS</h1>
+            <p class="lead">
+            <p><strong>Inline style</strong> don't use this!</p>
+            <p><strong>Internal stylesheet</strong> don't use this either!</p>
+            <p><strong>External stylesheet</strong> use this!!!</p>
+            </p>
+            <hr class="my-4">
+            <p>Using external stylesheets you can use the same code to more than one page.</p>
+            <a class="btn btn-primary btn-lg" href="#structure" role="button">Next</a>
+        </div>
+    </section>
 
+    <section id="structure" class="section structure">
+        <div class="jumbotron">
+            <h1 class="display-4">Basic structure</h1>
+            <p class="lead">
+                <span>selector</span>
+                <span>{</span>
+                <span>property:</span>
+                <span>value;</span>
+                <span>}</span>
+            </p>
+            <hr class="my-4">
+            <p>The selector specifies the html elements that will be affected by the rule</p>
+            <a class="btn btn-primary btn-lg" href="#selectors" role="button">Next</a>
+        </div>
+    </section>
 
+    <section id="selectors" class="section">
+        <div class="jumbotron">
+            <h1 class="display-4">Selectors</h1>
+            <p class="lead">
+            <p>h1 is an <strong>element</strong></p>
+            <p>.selector is a <strong>class</strong></p>
+            <p>#selector is an <strong>id</strong></p>
+            <p>:hover is a <strong>pseudo class</strong></p>
+            <hr class="my-4">
+            <p>This is what you need to refer to an element. You can combine selector to be more specific.</p>
+            <a class="btn btn-primary btn-lg" href="#priorities" role="button">Next</a>
+        </div>
+    </section>
+
+    <section id="priorities" class="section">
+        <div class="jumbotron">
+            <h1 class="display-4">Priorities</h1>
+            <p class="lead">
+            <p><strong>Inline style</strong></p>
+            <p><strong>Internal stylesheet</strong></p>
+            <p><strong>External stylesheet</strong></p>
+            <p><strong>Browser defaults</strong></p>
+            </p>
+            <hr class="my-4">
+            <p>It doesn't matter how !important it can be, avoid it.</p>
+            <a class="btn btn-primary btn-lg" href="#position" role="button">Next</a>
+        </div>
+    </section>
+
+    <section id="position" class="section">
+        <div class="jumbotron">
+            <h1 class="display-4">Position</h1>
+            <p class="lead">
+            <p><strong>Static</strong> - the default, follows the natural order</p>
+            <p><strong>Relative</strong> - the position relative to the static position</p>
+            <p><strong>Absolute</strong> - the position relative to the closest parent with a defined position</p>
+            <p>and many <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#Syntax" target="_blank">others</a></p>
+            <p>Like position, there are dozens of CSS properties.</p>
+            </p>
+            <hr class="my-4">
+            <p>If something disappears, check the z-index</p>
+            <a class="btn btn-primary btn-lg" href="#layout" role="button">Next</a>
+        </div>
+    </section>
+
+    <section id="layout" class="section">
+        <div class="jumbotron">
+            <h1 class="display-4">Layout</h1>
+            <p class="lead">
+            <p><strong>float</strong></p>
+            <p><strong>table</strong></p>
+            <p><strong>inline-block</strong></p>
+            <p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank"><strong>flexbox</strong></a></p>
+            <p><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank"><strong>cssgrid</strong></a></p>
+            </p>
+            <hr class="my-4">
+            <p>There are many ways to do the same thing. Too many...</p>
+            <a class="btn btn-primary btn-lg" href="#responsive" role="button">Next</a>
+        </div>
+    </section>
+
+    <section id="responsive" class="section">
+        <div class="jumbotron">
+            <h1 class="display-4">Responsive is important</h1>
+            <p class="lead">
+            <p><strong>Bootstrap</strong> uses several techniques to achieve a responsive website</p>
+            <p><strong>Combines</strong> HTML, CSS and JS</p>
+            <p>Has a <strong>Grid System</strong> with 12 columns</p>
+            <p>It uses <strong>4 prefixes</strong> to specify the grid width</p>
+            <p>It has <strong>lots</strong> of stylized elements</p>
+            </p>
+            <hr class="my-4">
+            <a class="btn btn-primary btn-lg" href="#end" role="button">Next</a>
+        </div>
+    </section>
+
+    <section id="end" class="section">
+        <div class="jumbotron">
+            <h1 class="display-4">The end</h1>
+        </div>
+    </section>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
 </body>
-</html>

@@ -1,0 +1,24 @@
+body {
+    background-color: black;
+}
+
+.structure span{
+    padding: 0 10px;
+}
+
+.structure span:hover{
+    background-color: cornflowerblue;
+}
+
+.jumbotron {
+    transform: translateY(220px);
+}
+
+.section {
+    min-height: 100vw;
+    align-items: center;
+}
+
+.selector:hover p {
+    content: "ADD";
+}

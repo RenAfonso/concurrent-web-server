@@ -21,12 +21,12 @@ public class WebServer {
 
         try {
             serverSocket = new ServerSocket(8080);
+            ExecutorService fixedPool = Executors.newFixedThreadPool(5000);
 
             while (true) {
 
                 clientSocket = serverSocket.accept();
 
-                ExecutorService fixedPool = Executors.newFixedThreadPool(5000);
                 fixedPool.submit(new HttpThreading(serverSocket, clientSocket));
 
                 //Thread thread = new Thread(;
